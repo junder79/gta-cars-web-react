@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select, notification } from 'antd';
 import axios from 'axios';
 function Formulario() {
 
@@ -9,8 +9,12 @@ function Formulario() {
     const [resistencia, setResistencia] = useState('');
     const [velocidad, setVelocidad] = useState('');
     const [tipo, setTipo] = useState('');
-
-    const onFinish = (value: any) => {
+    const abrirNotification = (mensaje) => {
+        notification.open({
+            message: mensaje,
+        });
+    };
+    const onFinish = (value) => {
         console.log('Success:', value);
         const formData = new FormData();
         formData.append('nombre', value.nombre);
@@ -31,14 +35,16 @@ function Formulario() {
             .then(function (response) {
                 //handle success
                 console.log(response);
+                abrirNotification('Vehiculo Agregado');
             })
             .catch(function (response) {
                 //handle error
                 console.log(response);
+                abrirNotification('Error al agregar');
             });
     };
 
-    const onFinishFailed = (errorInfo: any) => {
+    const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
     const handleChange = (value) => {

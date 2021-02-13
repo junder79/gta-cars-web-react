@@ -2,26 +2,36 @@ import logo from './logo.svg';
 import 'antd/dist/antd.css';
 import { Menu } from 'antd';
 import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // Importar componentes 
 import Formulario from './componentes/formulario';
-
+import Listar from './componentes/listar';
 
 function App() {
   const { SubMenu } = Menu;
 
   return (
-    <div className="App">
+    <Router>
       <Menu mode="horizontal">
         <Menu.Item key="anadir" icon={<MailOutlined />}>
-          Añadir
+          <Link to="/nuevo">Añadir</Link>
         </Menu.Item>
         <Menu.Item key="listar" icon={<MailOutlined />}>
-          Listar
+        <Link to="/listar">Listar</Link>
         </Menu.Item>
       </Menu>
-      <Formulario />
-    </div>
+      <Switch>
+        <Route path="/nuevo">
+          <Formulario />
+        </Route>
+        <Route path="/listar">
+          <Listar />
+        </Route>
+        <Route path="/">
+          <Formulario />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
