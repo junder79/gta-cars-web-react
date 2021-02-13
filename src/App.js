@@ -1,23 +1,26 @@
 import logo from './logo.svg';
-import './App.css';
+import 'antd/dist/antd.css';
+import { Menu } from 'antd';
+import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+
+// Importar componentes 
+import Formulario from './componentes/formulario';
+
 
 function App() {
+  const { SubMenu } = Menu;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Menu mode="horizontal">
+        <Menu.Item key="anadir" icon={<MailOutlined />}>
+          Añadir
+        </Menu.Item>
+        <Menu.Item key="listar" icon={<MailOutlined />}>
+          Listar
+        </Menu.Item>
+      </Menu>
+      <Formulario />
     </div>
   );
 }
