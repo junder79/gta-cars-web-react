@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Skeleton, notification, Space, Button } from 'antd';
 import axios from 'axios';
+import Form from 'antd/lib/form/Form';
 
 function Listar() {
     useEffect(() => {
@@ -21,7 +22,23 @@ function Listar() {
                 abrirNotification('Error cargar.');
             })
     }
-    // const eliminarVehiculo = () => {}
+    const eliminarVehiculo = (idVehiculo) => {
+
+        const formData = new FormData();
+        formData.append('id', idVehiculo);
+
+        axios.post('https://gtavehicles.000webhostapp.com/rest/public/api/eliminar', formData)
+            .then(function (response) {
+                console.log("respuesta " + response);
+                abrirNotification('Eliminado');
+                getAllVehiculos();
+            })
+            .catch(function (error) {
+                console.log(error);
+
+                abrirNotification('Error eliminar');
+            })
+    }
     const [dataVehiculos, setDataVehiculos] = useState([]);
     const [estadoCarga, setEstadoCarga] = useState(false);
 
@@ -75,7 +92,7 @@ function Listar() {
             render: (record) => (
                 <Space size="middle">
 
-                    <Button type="primary" shape="round" >
+                    <Button type="primary" onClick={() => eliminarVehiculo(record.idvehiculo)} shape="round" >
                         Eliminar
         </Button>
                 </Space>
