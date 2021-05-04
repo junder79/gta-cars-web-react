@@ -104,9 +104,11 @@ function Listar() {
 
     return (
         <>
-            {
-                estadoCarga ? <Skeleton /> : <Table columns={columns} dataSource={dataVehiculos} />
-            }
+            <div className="contenedor">
+                {
+                    estadoCarga ? <Skeleton /> : <Table columns={columns} dataSource={dataVehiculos} />
+                }
+            </div>
         </>
 
     )

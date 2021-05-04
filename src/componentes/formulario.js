@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import { Form, Input, Button, Select, notification, Row, Col, Card } from 'antd';
 import axios from 'axios';
+import '../assets/css/estilos.css';
 function Formulario() {
 
 
@@ -54,95 +55,134 @@ function Formulario() {
 
     return (
         <>
-            <Row>
-                <Col span={24}>
-                    <div className="site-card-border-less-wrapper">
-                        <Card title="Nuevo Vehiculo" bordered={false} style={{ width: 300 }}>
 
-                            <Form
+            <div className="contenedor" >
 
-                                name="formulario"
-                                initialValues={{ remember: true }}
-                                onFinish={onFinish}
-                                onFinishFailed={onFinishFailed}
+
+                <Form
+
+                    name="formulario"
+                    initialValues={{ remember: true }}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                >
+
+                    <Row >
+                        <Col xs={24} sm={8}>
+
+                            <Form.Item
+                                label="Nombre Vehiculo"
+                                name="nombre"
+                                className="input-margin"
+                                rules={[{ required: true, message: 'Ingresa Nombre' }]}
+                                labelCol={{ span: 24 }}
+                                wrapperCol = {{ span:24 }}
                             >
-                                <Form.Item
-                                    label="Nombre Vehiculo"
-                                    name="nombre"
-                                    rules={[{ required: true, message: 'Ingresa Nombre' }]}
-                                >
-                                    <Input />
-                                </Form.Item>
+                                <Input />
+                            </Form.Item>
+                        </Col>
+                        <Col xs={24} sm={8}>
 
-                                <Form.Item
-                                    label="Imagen"
-                                    name="imagen"
-                                    rules={[{ required: true, message: 'Ingrese Imagen' }]}
-                                >
-                                    <Input />
-                                </Form.Item>
+                            <Form.Item
+                                label="Imagen"
+                                name="imagen"
+                                className="input-margin"
+                                labelCol={{ span: 24 }}
+                                wrapperCol = {{ span:24 }}
+                                rules={[{ required: true, message: 'Ingrese Imagen' }]}
+                            >
+                                <Input />
+                            </Form.Item>
+                        </Col>
+                        <Col xs={24} sm={8}>
+                            <Form.Item
+                                label="Descripción"
+                                name="descripcion"
+                                className="input-margin"
+                                labelCol={{ span: 24 }}
+                                wrapperCol = {{ span:24 }}
+                                rules={[{ required: true, message: 'Ingrese Descripción' }]}
+                            >
+                                <Input />
+                            </Form.Item>
+                        </Col>
+                    </Row>
 
-                                <Form.Item
-                                    label="Descripción"
-                                    name="descripcion"
-                                    rules={[{ required: true, message: 'Ingrese Descripción' }]}
-                                >
-                                    <Input />
-                                </Form.Item>
-                                <Form.Item label="Categoria">
-                                    <Select onChange={(value) => setCategoria(value)} >
-                                        <Select.Option value="1">Terrestre</Select.Option>
-                                        <Select.Option value="2">Marítimo</Select.Option>
-                                        <Select.Option value="3">Aereo</Select.Option>
-                                        <Select.Option value="4">Aereo Helicóptero</Select.Option>
-                                        <Select.Option value="5">Extraños</Select.Option>
-                                        <Select.Option value="6">Motocicletas</Select.Option>
-                                    </Select>
-                                </Form.Item>
-                                <Form.Item label="Resistencia">
-                                    <Select onChange={(value) => setResistencia(value)}>
-                                        <Select.Option value="1">Mala</Select.Option>
-                                        <Select.Option value="2">Buena</Select.Option>
-                                        <Select.Option value="3">Muy Buena</Select.Option>
-                                        <Select.Option value="4">Aceptable</Select.Option>
-                                    </Select>
-                                </Form.Item>
-                                <Form.Item
-                                    label="Marca"
-                                    name="marca"
-                                    rules={[{ required: true, message: 'Ingrese Marca' }]}
-                                >
-                                    <Input />
-                                </Form.Item>
-                                <Form.Item label="Velocidad" >
-                                    <Select onChange={(value) => setVelocidad(value)}>
-                                        <Select.Option value="1">Mala</Select.Option>
-                                        <Select.Option value="2">Buena</Select.Option>
-                                        <Select.Option value="3">Muy Mala</Select.Option>
-                                        <Select.Option value="4">Muy Bueno</Select.Option>
-                                    </Select>
-                                </Form.Item>
-                                <Form.Item label="Tipo">
-                                    <Select onChange={(value) => setTipo(value)}>
-                                        <Select.Option value="1">Super</Select.Option>
-                                        <Select.Option value="2">Deportivo</Select.Option>
-                                        <Select.Option value="3">Clásico</Select.Option>
-                                        <Select.Option value="4">No Aplica</Select.Option>
-                                        <Select.Option value="5">Muscle</Select.Option>
-                                        <Select.Option value="6">Compacto</Select.Option>
-                                        <Select.Option value="7">Race Car</Select.Option>
-                                    </Select>
-                                </Form.Item>
-                                <Form.Item >
-                                    <Button type="primary" htmlType="submit">
-                                        Enviar
+
+
+                    <Row>
+                        <Col xs={24} sm={8}>
+                            <Form.Item label="Categoria"  className="input-margin"   labelCol={{ span: 24 }} wrapperCol = {{ span:24 }}>
+                                <Select  onChange={(value) => setCategoria(value)} >
+                                    <Select.Option value="1">Terrestre</Select.Option>
+                                    <Select.Option value="2">Marítimo</Select.Option>
+                                    <Select.Option value="3">Aereo</Select.Option>
+                                    <Select.Option value="4">Aereo Helicóptero</Select.Option>
+                                    <Select.Option value="5">Extraños</Select.Option>
+                                    <Select.Option value="6">Motocicletas</Select.Option>
+                                </Select>
+                            </Form.Item>
+                        </Col>
+                        <Col xs={24} sm={8}>
+                            <Form.Item label="Resistencia"  className="input-margin"   labelCol={{ span: 24 }}>
+                                <Select onChange={(value) => setResistencia(value)}>
+                                    <Select.Option value="1">Mala</Select.Option>
+                                    <Select.Option value="2">Buena</Select.Option>
+                                    <Select.Option value="3">Muy Buena</Select.Option>
+                                    <Select.Option value="4">Aceptable</Select.Option>
+                                </Select>
+                            </Form.Item>
+                        </Col>
+                        <Col xs={24} sm={8}>
+                            <Form.Item
+                                label="Marca"
+                                name="marca"
+                                className="input-margin"
+                                labelCol={{ span: 24 }}
+                                rules={[{ required: true, message: 'Ingrese Marca' }]}
+                            >
+                                <Input />
+                            </Form.Item>
+                        </Col>
+
+                    </Row>
+                    <Row>
+                        <Col xs={24} sm={8}>
+                            <Form.Item label="Velocidad"  className="input-margin"   labelCol={{ span: 24 }} >
+                                <Select onChange={(value) => setVelocidad(value)}>
+                                    <Select.Option value="1">Mala</Select.Option>
+                                    <Select.Option value="2">Buena</Select.Option>
+                                    <Select.Option value="3">Muy Mala</Select.Option>
+                                    <Select.Option value="4">Muy Bueno</Select.Option>
+                                </Select>
+                            </Form.Item>
+                        </Col>
+                        <Col xs={24} sm={8}>
+                            <Form.Item label="Tipo"   className="input-margin"  labelCol={{ span: 24 }}>
+                                <Select onChange={(value) => setTipo(value)}>
+                                    <Select.Option value="1">Super</Select.Option>
+                                    <Select.Option value="2">Deportivo</Select.Option>
+                                    <Select.Option value="3">Clásico</Select.Option>
+                                    <Select.Option value="4">No Aplica</Select.Option>
+                                    <Select.Option value="5">Muscle</Select.Option>
+                                    <Select.Option value="6">Compacto</Select.Option>
+                                    <Select.Option value="7">Race Car</Select.Option>
+                                </Select>
+                            </Form.Item>
+                        </Col>
+
+                    </Row>
+
+
+                    <Form.Item >
+                        <Button type="primary" className="color-boton" shape="round" htmlType="submit">
+                            Enviar
         </Button>
-                                </Form.Item>
-                            </Form>
-                        </Card>
-                    </div>
-                </Col>
-            </Row>
+                    </Form.Item>
+                </Form>
+
+            </div>
+
         </>
     )
 }
