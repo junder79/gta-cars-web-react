@@ -54,6 +54,7 @@ function Listar() {
             title: 'Nombre',
             dataIndex: 'nombre_vehiculo',
             key: 'nombre_vehiculo',
+            
         },
         {
             title: 'Imagen',

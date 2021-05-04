@@ -31,6 +31,8 @@ function Login() {
         axios.post('/url', formData)
             .then(function (response) {
                 console.log(response);
+                localStorage.setItem('usuario', 'junder');
+                localStorage.setItem('estadoLogin', true);
             })
             .catch(function (error) {
                 console.log(error);
@@ -56,6 +58,8 @@ function Login() {
                     <Form.Item
                         label="Usuario"
                         name="username"
+                        labelCol={{ span: 24 }}
+                        wrapperCol = {{ span:24 }}
                         rules={[
                             {
                                 required: true,
@@ -69,6 +73,8 @@ function Login() {
                     <Form.Item
                         label="Contraseña"
                         name="password"
+                        labelCol={{ span: 24 }}
+                        wrapperCol = {{ span:24 }}
                         rules={[
                             {
                                 required: true,

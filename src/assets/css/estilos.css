@@ -25,3 +25,5 @@ body {
     background-color: #4618AC;
     color:white;
 }
+
+.ant-table.ant-table-rtl { overflow-x: scroll; }
